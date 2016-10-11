@@ -9,12 +9,16 @@ import java.util.concurrent.TimeUnit;
 public class Game extends JPanel {
 Platta platta = new Platta(this);
 Ball ball = new Ball(this);
+Brick brick = new Brick(this);
+
+
     Font scoreFont = new Font("SansSerif", Font.PLAIN, 30);
     public int timeToStart=3;
 
     public Game(){
         setBackground(Color.BLACK);
         addKeyListener(new KeyListener() {
+
 
             public void keyTyped(KeyEvent e) {
 
@@ -78,6 +82,7 @@ Ball ball = new Ball(this);
                 e.printStackTrace();
             }
         }
+
     }
     public void gameOver(){
         JOptionPane.showMessageDialog(this, "Game Over", "Game Over", JOptionPane.YES_NO_OPTION);

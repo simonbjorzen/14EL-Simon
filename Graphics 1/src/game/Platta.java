@@ -2,7 +2,7 @@ package game;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-// Testing Git  
+// Testing Git
 /**
  * Created by simon on 10/4/16.
  */
@@ -10,7 +10,7 @@ public class Platta {
     private Game game;
     private int x=470;
     private int y=665;
-    private int width=150;
+    private int width=100;
     private int height=10;
     private int moveX=0;
 
@@ -26,7 +26,7 @@ public class Platta {
 
     void move()
     {
-        if (x+moveX>0 && x+moveX<game.getWidth()-150)
+        if (x+moveX>0 && x+moveX<game.getWidth()-100)
             x+=moveX;
     }
 

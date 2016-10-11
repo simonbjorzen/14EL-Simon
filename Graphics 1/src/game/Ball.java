@@ -7,7 +7,7 @@ import java.awt.*;
 public class Ball {
     private int x=500; //Location för bollen
     private int y=0; //Location för bollen
-    private int d=50; //Diameter
+    private int d=20; //Diameter
     private int moveX=1;
     private int moveY=1;
     private int score=0;
@@ -22,7 +22,7 @@ public class Ball {
         {
             moveX=1;
         }
-        if (x+moveX>game.getWidth()-40)
+        if (x+moveX>game.getWidth()-20)
         {
             moveX=-1;
         }
@@ -30,7 +30,7 @@ public class Ball {
         {
             moveY=1;
         }
-        if (y+moveY>game.getHeight()-40)
+        if (y+moveY>game.getHeight()-20)
         {
             game.gameOver();
         }
