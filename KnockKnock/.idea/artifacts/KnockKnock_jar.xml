@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="KnockKnock:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/KnockKnock_jar</output-path>
+    <root id="archive" name="KnockKnock.jar">
+      <element id="module-output" name="KnockKnock" />
+    </root>
+  </artifact>
+</component>

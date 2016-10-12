@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Graphics 1:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Graphics_1_jar</output-path>
+    <root id="archive" name="Graphics 1.jar">
+      <element id="module-output" name="Graphics 1" />
+      <element id="library" level="project" name="glg2d-0.3-20130517.133836-3" />
+      <element id="library" level="project" name="lwjgl" />
+    </root>
+  </artifact>
+</component>
