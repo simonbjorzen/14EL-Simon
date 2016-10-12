@@ -1,10 +1,7 @@
-package game;
+/*package game;
 import java.awt.*;
 
 
-/**
- * Created by simon on 10/11/16.
- */
 public class Brick
 {
         private int x=480; //Location för brick
@@ -31,3 +28,4 @@ public class Brick
 
 
 }
+*/

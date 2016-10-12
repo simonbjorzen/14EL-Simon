@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 public class Game extends JPanel {
 Platta platta = new Platta(this);
 Ball ball = new Ball(this);
-Brick brick = new Brick(this);
 
 
     Font scoreFont = new Font("SansSerif", Font.PLAIN, 30);
