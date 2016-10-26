@@ -52,10 +52,15 @@ public class KnockKnockProtocol {
                     currentJoke = 0;
                 else
                     currentJoke++;
-                state = SENTKNOCKKNOCK;
+                    state = SENTKNOCKKNOCK;
             } else {
-                theOutput = "Bye.";
-                state = WAITING;
+                theOutput = "Knock! Knock!";
+                if (currentJoke == (NUMJOKES - 1))
+                    currentJoke = 0;
+                else
+                 theOutput = "Bye.";
+                 state = WAITING;
+                 KnockKnockClient.killClient();
             }
         }
         return theOutput;

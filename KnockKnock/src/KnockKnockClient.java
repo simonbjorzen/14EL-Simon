@@ -75,4 +75,7 @@ public class KnockKnockClient {
             System.exit(1);
         }
     }
+    public static void killClient(){
+        System.exit(1);
+    }
 }
