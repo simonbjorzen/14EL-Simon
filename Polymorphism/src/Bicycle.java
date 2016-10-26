@@ -4,7 +4,7 @@
 public class Bicycle extends Vehicle{
     public double gasusage;
     public Bicycle() {
-        gasusage = 0.7;
+        gasusage = 0;
         price=4000;
         color="Blue";
         weight=17;

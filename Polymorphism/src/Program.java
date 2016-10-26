@@ -14,6 +14,7 @@ public class Program {
         System.out.println(" ");
         System.out.println("1. Calculate the price of a product while it's on sale.");
         System.out.println("2. Calculate the gas usage of your vehicle.");
+        System.out.println("3. Test Shit");
         int ans;
         Scanner reader = new Scanner(System.in);
         ans = reader.nextInt();
@@ -63,10 +64,6 @@ public class Program {
                         System.out.println("");
                         break;
                     }
-                    default: {
-                        System.out.println("Error!");
-                        break;
-                    }
                 }
 
             }
@@ -91,11 +88,15 @@ public class Program {
                         System.out.println(freighter.gasusage + " liters/10km");
                         break;
                     }
-                    default: {
-                        System.out.println("Error!");
-                        break;
-                    }
                 }
+            }
+            case 3:
+            {
+                System.out.println("The bike:");
+                bike.printInfo();
+               System.out.println("");
+                System.out.println("The car:");
+                sedan.printInfo();
             }
         }
     }

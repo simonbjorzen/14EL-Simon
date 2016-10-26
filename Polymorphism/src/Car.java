@@ -15,4 +15,11 @@ public class Car extends Vehicle {
         color="Black";
         weight=2100;
     }
+
+    public void printInfo(){
+        super.printInfo();
+        System.out.println("Engine power: "+horsepower+"hk");
+        System.out.println("Gas usage: "+gasusage+" litres/10km");
+        System.out.println("Platenumber: "+licenseplate);
+    }
 }
