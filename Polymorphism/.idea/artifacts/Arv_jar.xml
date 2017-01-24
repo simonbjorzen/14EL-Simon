@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Arv:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Arv_jar</output-path>
+    <root id="archive" name="Arv.jar">
+      <element id="module-output" name="Arv" />
+    </root>
+  </artifact>
+</component>
