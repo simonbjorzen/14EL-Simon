@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.util.*;
 import java.awt.*;
 
-public class Dummy implements Entity {
+public class Sheep implements Entity {
 
     private final ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("bin/sheep.gif"));
 
@@ -10,11 +10,11 @@ public class Dummy implements Entity {
 
     protected Pasture pasture;
    
-    public Dummy(Pasture pasture) {
+    public Sheep(Pasture pasture) {
 	this.pasture = pasture;
     }
 
-    public Dummy(Pasture pasture, Point position) {
+    public Sheep(Pasture pasture, Point position) {
 	this.pasture   = pasture;
 	this.position  = position;
     }
@@ -30,55 +30,55 @@ public class Dummy implements Entity {
         rnum = randomObj.ints(-1, 2).findFirst().getAsInt();
         return rnum;
     }
-    private double setPos1(){
-        int num1=randomPosition();
+    private double setPosY(){
+        int num=randomPosition();
         double rnum=getPosition().getY();
-        if (num1==-1)
+        if (num==-1)
         {
             rnum=getPosition().getY()-1;
         }
-        if (num1==1)
+        if (num==1)
         {
             rnum=getPosition().getY()+1;
         }
-        if (rnum==21){
-            rnum=20;
+        if (rnum>=29){
+            rnum=28;
         }
-        if (rnum==-1){
-            rnum=0;
+        if (rnum<=1){
+            rnum=2;
         }
         return rnum;
 
     }
-    private double setPos2(){
-        int num2=randomPosition();
+    private double setPosX(){
+        int num=randomPosition();
         double rnum=getPosition().getX();
 
-        if (num2==-1)
+        if (num==-1)
         {
             rnum=getPosition().getX()-1;
         }
-        if (num2==1)
+        if (num==1)
         {
             rnum=getPosition().getX()+1;
         }
-        if (rnum==21){
-            rnum=20;
+        if (rnum>=29){
+            rnum=28;
         }
-        if (rnum==-1){
-            rnum=0;
+        if (rnum<=1){
+            rnum=2;
         }
 
         return rnum;
     }
     public void tick() {
-	setPosition(new Point((int)setPos2(),(int)setPos1()));
-        System.out.println(getPosition());
+	    setPosition(new Point((int)setPosX(),(int)setPosY()));
+        System.out.println(randomPosition());
+        }
 
-    }
 
     public String type() {
-	return "Dummy";
+	return "Sheep";
     }
     
     public ImageIcon getImage() { return image; }

@@ -2,58 +2,57 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
-public class PastureGUI extends JFrame implements ActionListener {
+public class Core extends JFrame implements ActionListener {
 
 
     public static void main(String[] args) {
-        PastureGUI gui = new PastureGUI();
+        Core gui = new Core();
     }
 
-    /**
-     * Icon for an empty position in the pasture
-     */
     private final ImageIcon II_EMPTY = new ImageIcon(getClass().getClassLoader().getResource("bin/empty.gif"));
-    private final ImageIcon II_FENCE = new ImageIcon(getClass().getClassLoader().getResource("bin/fence.gif"));
-    private final ImageIcon II_WOLF = new ImageIcon(getClass().getClassLoader().getResource("bin/wolf.gif"));
-    /**
-     * The pasture this class should display
-     */
     private Pasture pasture;
-    /**
-     * The grid, i.e., the field containing the images to display.
-     */
-    private JLabel[][] grid;
-    /**
-     * The button for starting the simulation.
-     */
+    public JLabel[][] grid;
     private JButton startButton = new JButton("Start");
     private JButton stopButton = new JButton("Stop");
     private JButton exitButton = new JButton("Exit");
+    private JButton createSheep = new JButton("Create Sheep");
+    private JButton createWolf = new JButton("Create Wolf");
+    private JButton createPlant = new JButton("Create Plant");
 
-
-    public PastureGUI() {
+    public Core() {
         pasture = new Pasture(this);
         initPastureGUI();
     }
 
     private void initPastureGUI() {
         setSize(pasture.getWidth() * 30, pasture.getHeight() * 30);
-
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         startButton.addActionListener(this);
         stopButton.addActionListener(this);
         exitButton.addActionListener(this);
+        createSheep.addActionListener(this);
+        createWolf.addActionListener(this);
+        createPlant.addActionListener(this);
+
         JPanel buttons = new JPanel();
         buttons.setLayout(new GridLayout(1, 3));
         buttons.add(startButton);
         buttons.add(stopButton);
         buttons.add(exitButton);
 
+        JPanel menu = new JPanel();
+        menu.setLayout(new GridLayout(10,1));
+        menu.add(createSheep);
+        menu.add(createWolf);
+        menu.add(createPlant);
+
         JPanel field = new JPanel();
         field.setBackground(new Color(27, 204, 89));
         field.setLayout(new GridLayout(pasture.getHeight(),
                 pasture.getWidth()));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         grid = new JLabel[pasture.getWidth()][pasture.getHeight()];
 
         for (int y = 0; y < pasture.getHeight(); y++) {
@@ -64,12 +63,12 @@ public class PastureGUI extends JFrame implements ActionListener {
             }
         }
 
-
         Container display = getContentPane();
         display.setBackground(new Color(27, 204, 89));
         display.setLayout(new BorderLayout());
         display.add(field, BorderLayout.CENTER);
         display.add(buttons, BorderLayout.SOUTH);
+        display.add(menu, BorderLayout.EAST);
         stopButton.setEnabled(false);
         startButton.setEnabled(true);
         updateAll();
@@ -85,74 +84,51 @@ public class PastureGUI extends JFrame implements ActionListener {
         }
         if (e.getSource() == stopButton) {
             stopButton.setEnabled(false);
-            startButton.setEnabled(true);
             pasture.stop();
+            startButton.setEnabled(true);
         }
         if (e.getSource() == exitButton) {
             System.exit(1);
         }
+
+        if (e.getSource() == createSheep) {
+            pasture.createSheep(pasture.getRandomPos());
+        }
+        if (e.getSource() == createWolf) {
+            pasture.createWolf(pasture.getRandomPos());
+        }
+        if (e.getSource() == createPlant) {
+            pasture.createPlant(pasture.getRandomPos());
+        }
     }
-
-
-
     public void updateAll() {
         int width = pasture.getWidth();
         int height = pasture.getHeight();
-        Entity[][] tempGrid =
-                new Entity[width][height];
+        Entity[][] tempGrid = new Entity[width][height];
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++)
                 tempGrid[x][y] = null;
-
         Collection world = pasture.getEntities();
         Iterator it = world.iterator();
-
         while (it.hasNext()) {
             Entity e = (Entity) it.next();
             int x = (int) e.getPosition().getX();
             int y = (int) e.getPosition().getY();
-
-            if (tempGrid[x][y] == null) tempGrid[x][y] = e;
+            if (tempGrid[x][y] == null) {
+                tempGrid[x][y] = e;
+            }
         }
-
-        for (int y = 1; y < height-1; y++) {
-            for (int x = 1; x < width-1; x++) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
                 ImageIcon icon;
                 Entity e = tempGrid[x][y];
-
                 if (e == null) icon = II_EMPTY;
                 else icon = e.getImage();
                 grid[x][height - y - 1].setIcon(icon);
             }
         }
+        
 
-
-        for (int y=0;y<height; y++){
-            int x=height-1;
-            ImageIcon icon;
-            icon = II_FENCE;
-            grid[x][y].setIcon(icon);
-        }
-        for (int y=0;y<height; y++){
-            int x=0;
-            ImageIcon icon;
-            icon = II_FENCE;
-            grid[x][y].setIcon(icon);
-        }
-        for (int x=1;x<width-1; x++){
-            int y=0;
-            ImageIcon icon;
-            icon = II_FENCE;
-            grid[x][y].setIcon(icon);
-        }
-        for (int x=1;x<width-1; x++){
-            int y=width-1;
-            ImageIcon icon;
-            icon = II_FENCE;
-            grid[x][y].setIcon(icon);
-        }
     }
-
-
 }
 

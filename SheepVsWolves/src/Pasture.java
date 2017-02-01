@@ -1,9 +1,4 @@
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.MissingResourceException;
-import java.util.Set;
+import java.util.*;
 import javax.swing.Timer;
 import java.awt.event.*;
 import java.awt.*;
@@ -19,21 +14,37 @@ public class Pasture implements ActionListener {
     /** The timer that triggers ticks to be sent out to the entities. */
     private Timer      timer           = new Timer(SPEED_REFERENCE/speed,this);
     /** The width of this pasture */
-    private int         width          = 20;
+    private int         width          = 30;
     /** The height of this pasture */
-    private int         height         = 20;
+    private int         height         = 30;
    
 
     private PastureGUI gui;
 
+    private int randomPosition(){
+        Random randomObj = new Random();
+        int rnum;
+        rnum = randomObj.ints(1, 29).findFirst().getAsInt();
+        return rnum;
+    }
+    private int setPos() {
+        Random randomObj = new Random();
+        int rnum;
+        rnum = randomObj.ints(1, 29).findFirst().getAsInt();
+        return rnum;
+    }
+
     public Pasture(PastureGUI gui) {
 	this.gui = gui;
-	
         try {
-            Point position1 = new Point(10, 10);
-	        Entity dummy = new Dummy(this, position1);
-	        addEntity(dummy);
-        }
+            Point position1 = new Point(randomPosition(), randomPosition());
+	        Entity sheep = new Sheep(this, position1);
+	        addEntity(sheep);
+            Point position2 = new Point(randomPosition(), randomPosition());
+            Plant plant = new Plant(this, position2);
+            addEntity(plant);
+
+            }
         catch (MissingResourceException pe) {
             System.err.println("Pasture.initPasture(): " + pe.getMessage());
             System.exit(20);
@@ -43,15 +54,16 @@ public class Pasture implements ActionListener {
   
     public void actionPerformed(ActionEvent e) {
 	Iterator it = getEntities().iterator();
-	
+
 	while(it.hasNext()) {
 	    ((Entity)it.next()).tick();
 	    gui.updateAll();
-	}
+
+        	}
 	
     }
 
-    
+
     public void addEntity(Entity entity) {
 	synchronized(world) {
 	    world.add(entity);
