@@ -9,9 +9,9 @@ public abstract class Animal extends LivingThing {
     private int maxFood = 30;
     private int currentFood = 30;
     public int randomNumber(){
-        int Low = -1;
-        int High = 2;
-        int rnum = r.nextInt(High-Low) + Low;
+        int low = -1;
+        int high = 2;
+        int rnum = r.nextInt(high-low) + low;
         return rnum;
     }
     private Random r = new Random();
@@ -55,4 +55,5 @@ public abstract class Animal extends LivingThing {
             pasture.removeEntity(this);
         }
     }
+
 }

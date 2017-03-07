@@ -1,5 +1,7 @@
 import javax.swing.*;
+import javax.swing.text.html.HTMLDocument;
 import java.awt.*;
+import java.util.Iterator;
 
 /**
  * Created by Simon on 2017-01-31.
@@ -26,6 +28,22 @@ public class Engine implements Entity {
 
     public void tick() {
         doubleTick();
+        checkEnt();
+    }
+    public void checkEnt(){
+        /*Iterator it = pasture.getEntities().iterator();
+        while (it.hasNext()) {
+            Entity ent = (Entity)it.next();
+            if(!ent.type().equals("Fence")) {
+                System.out.print(ent.type());
+                System.out.print((int)ent.getPosition().getX());
+                System.out.println((int)ent.getPosition().getY());
+            }
+        }
+        System.out.println("--------");*/
+
+
+
     }
     public void doubleTick(){
         if (doubletick==0){
@@ -42,5 +60,8 @@ public class Engine implements Entity {
 
     public ImageIcon getImage() {
         return image;
+    }
+    public boolean isThing(){
+        return true;
     }
 }

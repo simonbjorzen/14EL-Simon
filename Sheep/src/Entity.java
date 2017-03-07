@@ -12,4 +12,5 @@ public interface Entity {
     public ImageIcon getImage();
 
     public String type();
+
 }

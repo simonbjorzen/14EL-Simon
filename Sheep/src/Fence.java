@@ -36,4 +36,5 @@ public class Fence implements Entity {
     public ImageIcon getImage() {
         return image;
     }
+
 }

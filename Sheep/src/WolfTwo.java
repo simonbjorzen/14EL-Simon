@@ -28,8 +28,5 @@ public class WolfTwo extends Animal{
         super.tick();
     }
 
-    public void checkForGrass(){
-        System.out.print("test");
 
-    }
 }

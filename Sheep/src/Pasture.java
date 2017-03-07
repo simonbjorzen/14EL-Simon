@@ -19,6 +19,7 @@ public class Pasture implements ActionListener {
     private int width = 31;
     private int height = 31;
     private Random r = new Random();
+    public int sheepAmount;
 
     public Point getRandomPos(){
         int Low = 1;

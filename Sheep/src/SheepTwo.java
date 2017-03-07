@@ -12,6 +12,7 @@ public class SheepTwo extends Animal{
     public SheepTwo(Pasture pasture, Point position) {
         this.pasture = pasture;
         this.position = position;
+        pasture.sheepAmount++;
     }
 
     public String type() {
@@ -28,8 +29,4 @@ public class SheepTwo extends Animal{
         super.tick();
     }
 
-    public void checkForGrass(){
-    System.out.print("test");
-
-    }
 }

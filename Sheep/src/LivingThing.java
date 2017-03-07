@@ -12,4 +12,5 @@ public abstract class LivingThing implements Entity {
     public void setPosition(Point newPosition) {
         position = newPosition;
     }
+
 }

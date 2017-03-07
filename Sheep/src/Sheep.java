@@ -80,4 +80,5 @@ public class Sheep implements Entity {
     public ImageIcon getImage() {
         return image;
     }
+
 }
