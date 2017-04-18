@@ -1,9 +1,9 @@
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+    import java.awt.*;
+    import java.awt.event.*;
+    import java.util.*;
+    import javax.swing.*;
+    import java.awt.GridBagConstraints;
+    import java.awt.GridBagLayout;
 
 public class Core extends JFrame implements ActionListener {
 
@@ -42,12 +42,10 @@ public class Core extends JFrame implements ActionListener {
         buttons.add(startButton);
         buttons.add(stopButton);
         buttons.add(exitButton);
+        buttons.add(createSheep);
+        buttons.add(createWolf);
+        buttons.add(createPlant);
 
-        JPanel menu = new JPanel();
-        menu.setLayout(new GridLayout(10,1));
-        menu.add(createSheep);
-        menu.add(createWolf);
-        menu.add(createPlant);
 
         JPanel field = new JPanel();
         field.setBackground(new Color(27, 204, 89));
@@ -68,7 +66,6 @@ public class Core extends JFrame implements ActionListener {
         display.setLayout(new BorderLayout());
         display.add(field, BorderLayout.CENTER);
         display.add(buttons, BorderLayout.SOUTH);
-        display.add(menu, BorderLayout.EAST);
         stopButton.setEnabled(false);
         startButton.setEnabled(true);
         updateAll();
