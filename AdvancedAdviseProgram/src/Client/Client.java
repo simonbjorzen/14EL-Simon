@@ -2,16 +2,13 @@ package Client;
 
 import java.net.*;
 import java.io.*;
+import java.util.*;
 
 
-/**
- * Created by simon on 4/18/17.
- */
 public class Client {
-
-    public void go(){
+    public void go(String ip, Integer port){
         try{
-            Socket socket = new Socket("192.168.210.198", 4200);
+            Socket socket = new Socket(ip, port);
             InputStreamReader streamReader = new InputStreamReader(socket.getInputStream());
             BufferedReader reader = new BufferedReader(streamReader);
             String advise = reader.readLine();
@@ -26,7 +23,14 @@ public class Client {
 
     public static void main(String[] args){
         Client client = new Client();
-        client.go();
+        String ip;
+        Integer port;
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Enter the IP: ");
+        ip = reader.next();
+        System.out.println("Enter the port: ");
+        port = reader.nextInt();
+        client.go(ip, port);
     }
 
 }
